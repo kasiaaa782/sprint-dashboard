@@ -1,0 +1,27 @@
+@import '../../styles.scss';
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .dashboard-header {
+    width: 100%;
+    background-color: rgba(216, 216, 216, 0.752);
+    -webkit-box-shadow: 0 0 32px 0 rgba(66, 68, 90, 0.6);
+    -moz-box-shadow: 0 0 32px 0 rgba(66, 68, 90, 0.6);
+    box-shadow: 0 0 32px 0 rgba(66, 68, 90, 0.6);
+  }
+
+  .dashboard-wrapper {
+    width: 440px;
+
+    @media screen and (min-width: $breakpoint-tablet) {
+      width: 720px;
+    }
+
+    @media screen and (min-width: $breakpoint-large) {
+      width: 1150px;
+    }
+  }
+}

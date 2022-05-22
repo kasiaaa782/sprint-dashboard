@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+
+  &--title {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .btn {
+    color: $font-main-color;
+  }
+}
