@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-header.component.scss']
 })
 export class DashboardHeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {}
 
+  addProject(): void {
+    //TODO
+  }
 }

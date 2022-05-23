@@ -13,6 +13,11 @@
   }
 
   .btn {
-    color: $font-main-color;
+    background-color: white;
+
+    &:hover {
+      background-color: $font-main-color;
+      color: white;
+    }
   }
 }

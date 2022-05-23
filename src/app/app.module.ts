@@ -6,10 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './dashboard/dashboard-header/dashboard-header.component';
+import { DashboardContentComponent } from './dashboard/dashboard-content/dashboard-content.component';
+import { SharedComponentsModule } from 'src/shared/shared-components.module';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, DashboardHeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    DashboardHeaderComponent,
+    DashboardContentComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedComponentsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -5,8 +5,10 @@ export interface Project {
 }
 
 export interface Sprint {
+  uuid: string;
+  number: number;
   startDate: string;
   endDate: string;
-  number: number;
   isReleased: boolean;
+  daysToEnd?: number;
 }
