@@ -8,13 +8,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './dashboard/dashboard-header/dashboard-header.component';
 import { DashboardContentComponent } from './dashboard/dashboard-content/dashboard-content.component';
 import { SharedComponentsModule } from 'src/shared/shared-components.module';
+import { DashboardModalComponent } from './dashboard/dashboard-modal/dashboard-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     DashboardHeaderComponent,
-    DashboardContentComponent
+    DashboardContentComponent,
+    DashboardModalComponent
   ],
   imports: [
     BrowserModule,

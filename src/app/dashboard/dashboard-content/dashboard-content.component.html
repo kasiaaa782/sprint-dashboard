@@ -10,7 +10,12 @@
           >
             Usuń
           </button>
-          <button class="btn btn-secondary" (click)="editProject(project.uuid)">
+          <button
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#dashboardModal"
+            (click)="editProject(project.uuid)"
+          >
             Edytuj
           </button>
         </div>
@@ -30,7 +35,7 @@
           </thead>
           <tbody>
             <tr
-              *ngFor="let sprint of project.sprints.reverse()"
+              *ngFor="let sprint of project.sprints"
               [class.sprint-archived]="sprint.isReleased"
             >
               <th scope="row">{{ sprint.number }}</th>
@@ -46,11 +51,15 @@
               <td class="icons-box">
                 <i
                   class="bi bi-trash text-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#dashboardModal"
                   (click)="deleteSprint(sprint.uuid)"
                 ></i>
                 <i
                   *ngIf="!sprint.isReleased"
                   class="bi bi-pencil-fill text-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#dashboardModal"
                   (click)="editSprint(sprint.uuid)"
                 ></i>
               </td>
@@ -62,6 +71,8 @@
         <i>Brak sprintów</i>
       </ng-template>
       <button
+        data-bs-toggle="modal"
+        data-bs-target="#dashboardModal"
         class="btn btn-outline-secondary sprint-button"
         (click)="addSprint()"
       >

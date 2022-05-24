@@ -1,8 +1,13 @@
 <main class="dashboard-container">
   <div class="dashboard-header">
-    <app-dashboard-header></app-dashboard-header>
+    <app-dashboard-header
+      (setModalContextEvent)="setModalContext($event)"
+    ></app-dashboard-header>
   </div>
   <div class="dashboard-content">
-    <app-dashboard-content></app-dashboard-content>
+    <app-dashboard-content
+      (setModalContextEvent)="setModalContext($event)"
+    ></app-dashboard-content>
   </div>
 </main>
+<app-dashboard-modal [modalContext]="modalContext"> </app-dashboard-modal>
