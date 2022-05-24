@@ -37,4 +37,5 @@ export enum ModalType {
 export interface ModalContext {
   type: ModalType;
   title: string;
+  text?: string;
 }

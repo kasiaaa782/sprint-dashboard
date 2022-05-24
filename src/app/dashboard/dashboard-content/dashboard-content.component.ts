@@ -54,17 +54,6 @@ export class DashboardContentComponent implements OnInit {
     });
   }
 
-  deleteSprint(uuid: string): void {
-    this.sprintService.deleteSprint(uuid).subscribe({
-      next: () => {
-        this.setModalContextEvent.emit({
-          type: ModalType.DELETE,
-          title: 'Usunięto sprint'
-        });
-      }
-    });
-  }
-
   editProject(uuid: string): void {
     this.setModalContextEvent.emit({
       type: ModalType.EDIT,
@@ -72,8 +61,28 @@ export class DashboardContentComponent implements OnInit {
     });
   }
 
-  deleteProject(uuid: string): void {
-    this.projectService.deleteProject(uuid).subscribe();
+  deleteSprint(uuid: string, number: number): void {
+    this.sprintService.deleteSprint(uuid).subscribe({
+      next: () => {
+        this.setModalContextEvent.emit({
+          type: ModalType.DELETE,
+          title: 'Usunięto sprint',
+          text: `Usunięto sprint o numerze <strong>${number}</strong>.`
+        });
+      }
+    });
+  }
+
+  deleteProject(uuid: string, title: string): void {
+    this.projectService.deleteProject(uuid).subscribe({
+      next: () => {
+        this.setModalContextEvent.emit({
+          type: ModalType.DELETE,
+          title: 'Usunięto projekt',
+          text: `Usunięto projekt o nazwie <strong>${title}</strong>.`
+        });
+      }
+    });
   }
 
   private getDaysToEnd(endDate: Date): number {

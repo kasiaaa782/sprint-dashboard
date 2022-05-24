@@ -6,7 +6,9 @@
         <div>
           <button
             class="btn btn-danger sprint-header--buttons"
-            (click)="deleteProject(project.uuid)"
+            data-bs-toggle="modal"
+            data-bs-target="#dashboardModal"
+            (click)="deleteProject(project.uuid, project.title)"
           >
             Usuń
           </button>
@@ -53,7 +55,7 @@
                   class="bi bi-trash text-danger"
                   data-bs-toggle="modal"
                   data-bs-target="#dashboardModal"
-                  (click)="deleteSprint(sprint.uuid)"
+                  (click)="deleteSprint(sprint.uuid, sprint.number)"
                 ></i>
                 <i
                   *ngIf="!sprint.isReleased"

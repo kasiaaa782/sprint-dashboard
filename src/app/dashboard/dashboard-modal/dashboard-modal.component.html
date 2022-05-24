@@ -18,7 +18,11 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body p-4">formularz</div>
+      <div class="modal-body p-4">
+        <ng-container *ngIf="modalContext.type == ModalType.DELETE">
+          <p [innerHTML]="modalContext.text"></p>
+        </ng-container>
+      </div>
       <div class="modal-footer p-4">
         <button
           type="button"
