@@ -1,0 +1,84 @@
+<div
+  class="modal fade"
+  id="dashboardModal"
+  tabindex="-1"
+  aria-labelledby="dashboardModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header p-4">
+        <h5 *ngIf="modalContext" class="modal-title" id="dashboardModalLabel">
+          {{ modalContext.title }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="resetForms()"
+        ></button>
+      </div>
+      <div *ngIf="modalContext" class="modal-body p-4">
+        <ng-container
+          *ngIf="modalContext.type == ModalType.DELETE; else formContent"
+        >
+          <p [innerHTML]="modalContext.text"></p>
+        </ng-container>
+        <ng-template #formContent>
+          <ng-container
+            *ngIf="modalContext.projectRequest || modalContext.projectUpdate"
+          >
+            <app-project-form
+              [projectToUpdate]="
+                modalContext.projectUpdate ? modalContext.projectUpdate : null
+              "
+            ></app-project-form>
+          </ng-container>
+
+          <ng-container
+            *ngIf="modalContext.sprintRequest || modalContext.sprintUpdate"
+          >
+            <app-sprint-form
+              [projectUuid]="
+                modalContext.sprintRequest
+                  ? modalContext.sprintRequest.projectUuid
+                  : ''
+              "
+              [sprintToUpdate]="
+                modalContext.sprintUpdate ? modalContext.sprintUpdate : null
+              "
+            ></app-sprint-form>
+          </ng-container>
+        </ng-template>
+      </div>
+      <div *ngIf="modalContext" class="modal-footer p-4">
+        <button
+          type="button"
+          id="cancel"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="modalContext.type == ModalType.DELETE ? '' : resetForms()"
+        >
+          Zamknij
+        </button>
+        <button
+          *ngIf="modalContext.type == ModalType.ADD"
+          type="button"
+          class="btn btn-primary"
+          (click)="add()"
+        >
+          Dodaj
+        </button>
+        <button
+          *ngIf="modalContext.type == ModalType.EDIT"
+          type="button"
+          class="btn btn-primary"
+          (click)="edit()"
+        >
+          Aktualizuj dane
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
