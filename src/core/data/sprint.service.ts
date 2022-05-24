@@ -7,14 +7,11 @@ import { Sprint, SprintRequest } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class SprintService {
-  createSprint(
-    projectUuid: string,
-    request: SprintRequest
-  ): Observable<Sprint> {
+  createSprint(request: SprintRequest): Observable<Sprint> {
     return of({
       uuid: '00000',
       projectUuid: '00000',
-      number: 0,
+      number: 33,
       startDate: '2222-22-22',
       endDate: '2222-22-22',
       isReleased: false

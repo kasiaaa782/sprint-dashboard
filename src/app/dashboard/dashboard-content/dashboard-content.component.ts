@@ -4,10 +4,12 @@ import { ProjectService } from 'src/core/data/project.service';
 import {
   ModalContext,
   ModalType,
-  Project
+  Project,
+  Sprint
 } from 'src/core/interfaces/interfaces';
 import { EventEmitter } from '@angular/core';
 import { SprintService } from 'src/core/data/sprint.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -18,6 +20,17 @@ export class DashboardContentComponent implements OnInit {
   @Output() setModalContextEvent = new EventEmitter<ModalContext>();
 
   projectList: Project[] = [];
+
+  projectForm = new FormGroup({
+    title: new FormControl(''),
+    sprints: new FormGroup({
+      projectUuid: new FormControl(''),
+      number: new FormControl(null),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
+      isReleased: new FormControl('')
+    })
+  });
 
   constructor(
     private projectService: ProjectService,
@@ -40,17 +53,25 @@ export class DashboardContentComponent implements OnInit {
     });
   }
 
-  addSprint(): void {
+  addSprint(projectUuid: string): void {
     this.setModalContextEvent.emit({
       type: ModalType.ADD,
-      title: 'Dodaj sprint'
+      title: 'Dodaj sprint',
+      sprintRequest: {
+        projectUuid: projectUuid,
+        number: 0,
+        startDate: '',
+        endDate: '',
+        isReleased: false
+      }
     });
   }
 
-  editSprint(uuid: string): void {
+  editSprint(sprint: Sprint): void {
     this.setModalContextEvent.emit({
       type: ModalType.EDIT,
-      title: 'Edytuj sprint'
+      title: 'Edytuj sprint',
+      sprintUpdate: sprint
     });
   }
 

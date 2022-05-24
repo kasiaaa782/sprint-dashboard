@@ -62,7 +62,7 @@
                   class="bi bi-pencil-fill text-warning"
                   data-bs-toggle="modal"
                   data-bs-target="#dashboardModal"
-                  (click)="editSprint(sprint.uuid)"
+                  (click)="editSprint(sprint)"
                 ></i>
               </td>
             </tr>
@@ -76,7 +76,7 @@
         data-bs-toggle="modal"
         data-bs-target="#dashboardModal"
         class="btn btn-outline-secondary sprint-button"
-        (click)="addSprint()"
+        (click)="addSprint(project.uuid)"
       >
         Dodaj sprint
       </button>

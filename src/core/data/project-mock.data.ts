@@ -2,11 +2,11 @@ import { Project } from '../interfaces/interfaces';
 
 export const projectListMock: Project[] = [
   {
-    uuid: '4736d974-d886-11ec-9d64-0242ac120002',
+    uuid: '4736d974-d886-11ec-9d64-0242ac120001',
     title: 'Dragon',
     sprints: [
       {
-        uuid: '4736d974-d886-11ec-9d64-0242ac120002',
+        uuid: '4736d974-d886-11ec-9d64-0242ac120003',
         projectUuid: '4736d974-d886-11ec-9d64-0242ac120002',
         startDate: '2022-05-02',
         endDate: '2022-05-13',
@@ -14,7 +14,7 @@ export const projectListMock: Project[] = [
         isReleased: true
       },
       {
-        uuid: '4736d974-d886-11ec-9d64-0242ac120002',
+        uuid: '4736d974-d886-11ec-9d64-0242ac120004',
         projectUuid: '4736d974-d886-11ec-9d64-0242ac120002',
         startDate: '2022-05-16',
         endDate: '2022-05-27',
@@ -22,7 +22,7 @@ export const projectListMock: Project[] = [
         isReleased: false
       },
       {
-        uuid: '4736d974-d886-11ec-9d64-0242ac120002',
+        uuid: '4736d974-d886-11ec-9d64-0242ac1200025',
         projectUuid: '4736d974-d886-11ec-9d64-0242ac120002',
         startDate: '2022-05-30',
         endDate: '2022-06-08',

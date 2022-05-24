@@ -38,4 +38,6 @@ export interface ModalContext {
   type: ModalType;
   title: string;
   text?: string;
+  sprintRequest?: SprintRequest;
+  sprintUpdate?: Sprint;
 }
