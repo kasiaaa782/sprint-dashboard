@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { ModalContext } from 'src/core/interfaces/interfaces';
 
@@ -7,12 +7,8 @@ import { ModalContext } from 'src/core/interfaces/interfaces';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   modalContext: ModalContext;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   setModalContext(modalContext: ModalContext): void {
     this.modalContext = modalContext;

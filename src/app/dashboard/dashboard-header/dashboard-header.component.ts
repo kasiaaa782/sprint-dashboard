@@ -17,7 +17,11 @@ export class DashboardHeaderComponent implements OnInit {
   addProject(): void {
     this.setModalContextEvent.emit({
       type: ModalType.ADD,
-      title: 'Dodaj projekt'
+      title: 'Dodaj projekt',
+      projectRequest: {
+        title: '',
+        sprints: []
+      }
     });
   }
 }

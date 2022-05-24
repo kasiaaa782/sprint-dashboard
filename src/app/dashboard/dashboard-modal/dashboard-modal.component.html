@@ -16,7 +16,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
-          (click)="resetForm()"
+          (click)="resetForms()"
         ></button>
       </div>
       <div *ngIf="modalContext" class="modal-body p-4">
@@ -26,7 +26,16 @@
           <p [innerHTML]="modalContext.text"></p>
         </ng-container>
         <ng-template #formContent>
-          <!-- <app-project-form></app-project-form> -->
+          <ng-container
+            *ngIf="modalContext.projectRequest || modalContext.projectUpdate"
+          >
+            <app-project-form
+              [projectToUpdate]="
+                modalContext.projectUpdate ? modalContext.projectUpdate : null
+              "
+            ></app-project-form>
+          </ng-container>
+
           <ng-container
             *ngIf="modalContext.sprintRequest || modalContext.sprintUpdate"
           >
@@ -49,7 +58,7 @@
           id="cancel"
           class="btn btn-secondary"
           data-bs-dismiss="modal"
-          (click)="modalContext.type == ModalType.DELETE ? '' : resetForm()"
+          (click)="modalContext.type == ModalType.DELETE ? '' : resetForms()"
         >
           Zamknij
         </button>

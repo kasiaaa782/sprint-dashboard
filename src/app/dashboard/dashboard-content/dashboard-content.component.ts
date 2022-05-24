@@ -75,10 +75,11 @@ export class DashboardContentComponent implements OnInit {
     });
   }
 
-  editProject(uuid: string): void {
+  editProject(project: Project): void {
     this.setModalContextEvent.emit({
       type: ModalType.EDIT,
-      title: 'Edytuj projekt'
+      title: 'Edytuj projekt',
+      projectUpdate: project
     });
   }
 

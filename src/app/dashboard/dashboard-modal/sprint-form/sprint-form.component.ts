@@ -12,7 +12,7 @@ import { Project, Sprint, SprintRequest } from 'src/core/interfaces/interfaces';
 export class SprintFormComponent implements OnChanges {
   @Input() projectUuid: string;
 
-  @Input() sprintToUpdate?: Sprint | null;
+  @Input() sprintToUpdate: Sprint | null;
 
   sprintForm = new FormGroup({
     number: new FormControl(
@@ -32,11 +32,13 @@ export class SprintFormComponent implements OnChanges {
         startDate: this.sprintToUpdate.startDate,
         endDate: this.sprintToUpdate.endDate
       });
+    } else {
+      this.setSprintNumber(this.projectUuid);
     }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!this.sprintToUpdate) {
+    if (this.sprintToUpdate) {
       this.setSprintNumber(changes['projectUuid'].currentValue);
     }
   }
@@ -51,17 +53,15 @@ export class SprintFormComponent implements OnChanges {
     };
   }
 
-  private setSprintNumber(project: Project): void {
-    this.projectService
-      .getProjectById(this.projectUuid)
-      .subscribe((project) => {
-        let number = 1;
-        project.sprints.forEach((sprint) => {
-          if (sprint.number > number) {
-            number = sprint.number;
-          }
-        });
-        this.sprintForm.controls['number'].setValue(number + 1);
+  private setSprintNumber(projectUuid: string): void {
+    this.projectService.getProjectById(projectUuid).subscribe((project) => {
+      let number = 1;
+      project.sprints.forEach((sprint) => {
+        if (sprint.number > number) {
+          number = sprint.number;
+        }
       });
+      this.sprintForm.controls['number'].setValue(number + 1);
+    });
   }
 }

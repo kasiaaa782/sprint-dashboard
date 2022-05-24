@@ -40,4 +40,6 @@ export interface ModalContext {
   text?: string;
   sprintRequest?: SprintRequest;
   sprintUpdate?: Sprint;
+  projectRequest?: ProjectRequest;
+  projectUpdate?: Project;
 }
