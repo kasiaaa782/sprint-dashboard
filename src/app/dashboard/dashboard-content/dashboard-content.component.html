@@ -1,0 +1,72 @@
+<div class="dashboard-container">
+  <ng-container *ngFor="let project of projectList">
+    <app-box>
+      <div class="sprint-header">
+        <div class="title">Projekt: {{ project.title }}</div>
+        <div>
+          <button
+            class="btn btn-danger sprint-header--buttons"
+            (click)="deleteProject(project.uuid)"
+          >
+            Usuń
+          </button>
+          <button class="btn btn-secondary" (click)="editProject(project.uuid)">
+            Edytuj
+          </button>
+        </div>
+      </div>
+      <ng-container *ngIf="project.sprints.length > 1; else lackOfSprints">
+        <i>Szczegoły sprintów:</i>
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th scope="col">Nr.</th>
+              <th scope="col">Data rozpoczęcia</th>
+              <th scope="col">Data ukończenia</th>
+              <th scope="col">Dni do zamknięcia</th>
+              <th scope="col">Zreleasowany</th>
+              <th scope="col">Operacje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let sprint of project.sprints.reverse()"
+              [class.sprint-archived]="sprint.isReleased"
+            >
+              <th scope="row">{{ sprint.number }}</th>
+              <td>{{ sprint.startDate | date: 'dd.MM.YYYY' }}</td>
+              <td>{{ sprint.endDate | date: 'dd.MM.YYYY' }}</td>
+              <td>{{ sprint.daysToEnd }}</td>
+              <td>
+                <ng-container *ngIf="sprint.isReleased; else isNotReleased">
+                  Tak
+                </ng-container>
+                <ng-template #isNotReleased> Nie </ng-template>
+              </td>
+              <td class="icons-box">
+                <i
+                  class="bi bi-trash text-danger"
+                  (click)="deleteSprint(sprint.uuid)"
+                ></i>
+                <i
+                  *ngIf="!sprint.isReleased"
+                  class="bi bi-pencil-fill text-warning"
+                  (click)="editSprint(sprint.uuid)"
+                ></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <ng-template #lackOfSprints>
+        <i>Brak sprintów</i>
+      </ng-template>
+      <button
+        class="btn btn-outline-secondary sprint-button"
+        (click)="addSprint()"
+      >
+        Dodaj sprint
+      </button>
+    </app-box>
+  </ng-container>
+</div>

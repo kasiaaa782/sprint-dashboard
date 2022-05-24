@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+/* variables */
+$breakpoint-large: 1200px;
+$breakpoint-tablet: 1024px;
+$breakpoint-phone: 480px;
+$font-main-color: #6b6b6b;
+$font-light-color: #b7b7b7;
+$background-color: rgba(249, 249, 249, 1);
+
+/* global styles */
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, 'Source Sans Pro', 'Trebuchet MS';
+  font-size: 14px;
+  color: $font-main-color;
+  margin: 0;
+  padding: 0;
+}

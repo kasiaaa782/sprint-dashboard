@@ -1,0 +1,18 @@
+@import '../../styles.scss';
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  width: 600px;
+  border-radius: 20px;
+  margin-bottom: 35px;
+  padding: 30px 35px;
+  -webkit-box-shadow: 0px 0px 43px -1px rgba(30, 30, 30, 0.46);
+  -moz-box-shadow: 0px 0px 43px -1px rgba(30, 30, 30, 0.46);
+  box-shadow: 0px 0px 43px -1px rgba(30, 30, 30, 0.46);
+
+  @media screen and (min-width: $breakpoint-tablet) {
+    margin: 0 15px 35px 15px;
+  }
+}
